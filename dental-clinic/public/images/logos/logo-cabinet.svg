@@ -1,0 +1,22 @@
+<svg width="200" height="80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Cercle de fond -->
+  <circle cx="40" cy="40" r="30" fill="url(#logoGrad)"/>
+  
+  <!-- Dent stylisée -->
+  <path d="M 25 25 Q 40 15 55 25 Q 55 35 50 45 Q 45 55 40 55 Q 35 55 30 45 Q 25 35 25 25 Z" fill="white"/>
+  <circle cx="35" cy="30" r="2" fill="#3b82f6"/>
+  <circle cx="45" cy="30" r="2" fill="#3b82f6"/>
+  <path d="M 32 40 Q 40 45 48 40" stroke="#3b82f6" stroke-width="2" fill="none"/>
+  
+  <!-- Texte -->
+  <text x="85" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e40af">Cabinet</text>
+  <text x="85" y="50" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#3b82f6">Dentaire</text>
+  <text x="85" y="65" font-family="Arial, sans-serif" font-size="10" fill="#64748b">Excellence &amp; Sourire</text>
+</svg>

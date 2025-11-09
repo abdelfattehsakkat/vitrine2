@@ -1,0 +1,107 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+        - production
+        - staging
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment || 'production' }}
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Generate docker-compose for deployment
+      run: |
+        cat > docker-compose.deploy.yml << 'EOF'
+        version: '3.8'
+        
+        services:
+          dental-clinic:
+            image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            container_name: dental-clinic-app
+            restart: unless-stopped
+            ports:
+              - "3000:3000"
+            environment:
+              - NODE_ENV=production
+              - NEXT_TELEMETRY_DISABLED=1
+              - NEXT_PUBLIC_SITE_URL=${{ vars.NEXT_PUBLIC_SITE_URL || 'https://cabinet-dentaire.fr' }}
+        EOF
+
+    - name: Create deployment package
+      run: |
+        mkdir -p deployment-package
+        cp docker-compose.deploy.yml deployment-package/
+        cp docker-compose.yml deployment-package/docker-compose.full.yml
+        cp deploy.sh deployment-package/
+        
+        # Create simple deployment script
+        cat > deployment-package/deploy-latest.sh << 'EOF'
+        #!/bin/bash
+        
+        echo "🚀 Deploying Cabinet Dentaire - Latest Version"
+        echo "Image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest"
+        
+        # Pull latest image
+        docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+        
+        # Stop and remove existing container
+        docker-compose -f docker-compose.deploy.yml down 2>/dev/null || true
+        
+        # Start new version
+        docker-compose -f docker-compose.deploy.yml up -d
+        
+        echo "✅ Deployment completed!"
+        echo "Site available at: http://localhost:3000"
+        EOF
+        
+        chmod +x deployment-package/deploy-latest.sh
+
+    - name: Upload deployment artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: deployment-package-${{ github.sha }}
+        path: deployment-package/
+        retention-days: 30
+
+    - name: Generate deployment instructions
+      run: |
+        echo "## 🚀 Production Deployment Ready" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 📦 Docker Image" >> $GITHUB_STEP_SUMMARY
+        echo "\`${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest\`" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 🔧 Deploy on your server:" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "1. **Download deployment package** from artifacts above" >> $GITHUB_STEP_SUMMARY
+        echo "2. **Extract and run:**" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+        echo "# Quick deployment (HTTP only)" >> $GITHUB_STEP_SUMMARY
+        echo "./deploy-latest.sh" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "# Full deployment (with SSL/Traefik)" >> $GITHUB_STEP_SUMMARY
+        echo "./deploy.sh your-domain.com admin@your-domain.com" >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 🌐 Access your site:" >> $GITHUB_STEP_SUMMARY
+        echo "- **HTTP**: http://your-server-ip:3000" >> $GITHUB_STEP_SUMMARY
+        echo "- **HTTPS**: https://your-domain.com (with full deployment)" >> $GITHUB_STEP_SUMMARY

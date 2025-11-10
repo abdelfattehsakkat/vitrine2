@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import ImageGallery from '@/components/ui/ImageGallery';
 import OptimizedImage from '@/components/ui/OptimizedImage';
-import { 
-  Shield, 
-  Award, 
-  Users, 
+import {
+  Shield,
+  Award,
+  Users,
   Star,
   GraduationCap,
   Clock,
@@ -39,7 +39,7 @@ export default function Home() {
 
   const stats = [
     { icon: <Users className="w-8 h-8" />, number: "2500+", label: "Patients satisfaits" },
-    { icon: <Smile className="w-8 h-8" />, number: "15", label: "Années d&apos;expérience" },
+    { icon: <Smile className="w-8 h-8" />, number: "15", label: "Années expérience" },
     { icon: <Star className="w-8 h-8" />, number: "4.9/5", label: "Note moyenne" },
     { icon: <Heart className="w-8 h-8" />, number: "100%", label: "Dédié à votre sourire" }
   ];
@@ -88,19 +88,19 @@ export default function Home() {
                 <span className="text-blue-300 block">notre passion</span>
               </h1>
               <p className="text-xl mb-8 text-blue-100">
-                Des soins dentaires d&apos;excellence dans un environnement moderne et bienveillant. 
+                Des soins dentaires d&apos;excellence dans un environnement moderne et bienveillant.
                 Votre confort et votre satisfaction sont nos priorités.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
-                  Prendre rendez-vous
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
                   Découvrir nos soins
+                </Button>
+                <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
+                  Prendre rendez-vous
                 </Button>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -172,7 +172,7 @@ export default function Home() {
               Qualifications & Diplômes
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Une formation continue et des certifications reconnues pour vous offrir 
+              Une formation continue et des certifications reconnues pour vous offrir
               les meilleurs soins avec les techniques les plus avancées.
             </p>
           </motion.div>
@@ -251,7 +251,7 @@ export default function Home() {
               Prêt à retrouver le sourire ?
             </h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Prenez rendez-vous dès aujourd&apos;hui pour une consultation personnalisée. 
+              Prenez rendez-vous dès aujourd&apos;hui pour une consultation personnalisée.
               Notre équipe est là pour vous accompagner dans tous vos projets de soins dentaires.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -259,7 +259,7 @@ export default function Home() {
                 <Clock className="w-5 h-5 mr-2" />
                 Prendre rendez-vous
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
+              <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
                 Appeler maintenant
               </Button>
             </div>

@@ -28,19 +28,19 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
 
   const contactInfo = {
-    address: "123 Rue de la Santé, 75013 Paris",
-    phone: "+33 1 23 45 67 89",
-    email: "contact@cabinet-dentaire.fr",
-    urgencyPhone: "+33 6 12 34 56 78"
+    address: "47 Av. Fethi Zouhir, Ariana 2083",
+    phone: "+216 70 935 541",
+    email: "guedria.yosraa@gmail.com",
+    urgencyPhone: "+216 70 935 541"
   };
 
   const openingHours = [
-    { day: "Lundi", hours: "9h00 - 18h00" },
-    { day: "Mardi", hours: "9h00 - 18h00" },
-    { day: "Mercredi", hours: "9h00 - 18h00" },
-    { day: "Jeudi", hours: "9h00 - 18h00" },
-    { day: "Vendredi", hours: "9h00 - 18h00" },
-    { day: "Samedi", hours: "9h00 - 13h00" },
+    { day: "Lundi", hours: "9h00 - 16h30" },
+    { day: "Mardi", hours: "9h00 - 16h30" },
+    { day: "Mercredi", hours: "9h00 - 16h30" },
+    { day: "Jeudi", hours: "9h00 - 16h30" },
+    { day: "Vendredi", hours: "9h00 - 16h30" },
+    { day: "Samedi", hours: "9h00 - 14h00" },
     { day: "Dimanche", hours: "Fermé" }
   ];
 
@@ -354,15 +354,17 @@ export default function Contact() {
               Nous trouver
             </h3>
             <div className="w-full h-96 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-              <div className="text-center text-gray-500 dark:text-gray-400">
-                <MapPin className="w-12 h-12 mx-auto mb-4" />
-                <p>Carte interactive</p>
-                <p className="text-sm">{contactInfo.address}</p>
-                <p className="text-sm mt-2">
-                  Métro: Ligne 6 - Station Nationale<br />
-                  Bus: Lignes 27, 83 - Arrêt Patay-Tolbiac
-                </p>
-              </div>
+              <iframe
+                title="Google Maps - 47 Av. Fethi Zouhir, Ariana 2083"
+                src="https://www.google.com/maps?q=47+Av.+Fethi+Zouhir,+Ariana+2083&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, borderRadius: '0.75rem' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-96 rounded-lg"
+              ></iframe>
             </div>
           </div>
         </motion.div>

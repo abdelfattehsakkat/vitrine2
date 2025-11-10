@@ -5,9 +5,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const contactInfo = {
-    phone: '+33 1 23 45 67 89',
-    email: 'contact@cabinet-dentaire.fr',
-    address: '123 Rue de la Santé, 75013 Paris',
+    phone: '+216 70 935 541',
+    email: 'guedria.yosraa@gmail.com',
+    address: '47 Av. Fethi Zouhir, Ariana 2083',
     hours: 'Lun-Ven: 9h-18h, Sam: 9h-13h'
   };
 

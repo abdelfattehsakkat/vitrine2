@@ -42,10 +42,7 @@ export default function OptimizedImage({
       <Image
         src={imageError ? fallbackSrc : src}
         alt={alt}
-        width={fill ? undefined : width}
-        height={fill ? undefined : height}
-        fill={fill}
-        sizes={sizes}
+        {...(fill ? { fill: true, sizes } : { width, height })}
         priority={priority}
         placeholder={placeholder}
         className={`transition-opacity duration-300 ${

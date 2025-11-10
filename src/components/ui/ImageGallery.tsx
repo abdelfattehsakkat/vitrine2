@@ -78,7 +78,7 @@ export default function ImageGallery({ images, title, className = '' }: ImageGal
                 alt={image.alt}
                 width={400}
                 height={300}
-                fill
+                fill={true}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="transition-transform duration-300 group-hover:scale-110"
               />

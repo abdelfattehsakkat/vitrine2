@@ -1,8 +1,6 @@
 services:
   dental-clinic:
-    build: 
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/ton-utilisateur/ton-repo:latest
     container_name: dental-clinic-app
     restart: unless-stopped
     ports:

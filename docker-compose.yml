@@ -1,6 +1,6 @@
 services:
   dental-clinic:
-    image: ghcr.io/ton-utilisateur/ton-repo:latest
+    image: ghcr.io/abdelfattehsakkat/vitrine2:latest
     container_name: dental-clinic-app
     restart: unless-stopped
     ports:

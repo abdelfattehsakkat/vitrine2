@@ -289,16 +289,16 @@ export default function Home() {
             >
               <div className="aspect-[4/3] relative">
                 <OptimizedImage
-                  src="/images/cabinet/sterilisation.jpg"
-                  alt="Zone de stérilisation aux normes les plus strictes"
+                  src="/images/cabinet/blanchiment.jpg"
+                  alt="Sourire éclatant après un blanchiment dentaire professionnel"
                   width={600}
                   height={450}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 text-white">
-                    <h4 className="font-bold text-lg">Hygiène Parfaite</h4>
-                    <p className="text-sm opacity-90">Standards les plus élevés</p>
+                    <h4 className="font-bold text-lg">Blanchiment Dentaire</h4>
+                    <p className="text-sm opacity-90">Retrouvez un sourire éclatant et naturel grâce à nos techniques de blanchiment professionnel.</p>
                   </div>
                 </div>
               </div>

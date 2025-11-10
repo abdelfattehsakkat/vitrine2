@@ -1,5 +1,4 @@
-# Utiliser l'image officielle Node.js comme base
-FROM node:18-alpine AS base
+FROM node:20-alpine AS base
 
 # Installer les dépendances seulement quand nécessaire
 FROM base AS deps
@@ -17,7 +16,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Variables d'environnement pour le build
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED=1
 
 # Build de l'application
 RUN npm run build
@@ -26,8 +25,8 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 
 # Créer un utilisateur non-root
 RUN addgroup --system --gid 1001 nodejs
@@ -48,8 +47,8 @@ USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
 
 # Commande pour démarrer l'application
 CMD ["node", "server.js"]

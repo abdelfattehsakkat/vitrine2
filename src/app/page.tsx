@@ -60,8 +60,10 @@ export default function Home() {
                 <span className="text-blue-300 block">notre passion</span>
               </h1>
               <p className="text-xl mb-8 text-blue-100">
-                Dr. Guedria Yosra vous propose des soins dentaires d'excellence dans un environnement moderne et bienveillant.
-                Votre confort et votre satisfaction sont nos priorités.
+                <span className="font-caveat text-2xl inline-block align-middle mr-2">Dr. Guedria Yosra</span>
+                <span className="align-middle">vous propose des soins dentaires d'excellence dans un environnement moderne et bienveillant.</span>
+                <br />
+                <span className="font-caveat text-1xl block mt-1">Votre confort et votre satisfaction sont nos priorités.</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a href="/soins">

@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   dental-clinic:
     build: 
@@ -12,49 +10,3 @@ services:
     environment:
       - NODE_ENV=production
       - NEXT_TELEMETRY_DISABLED=1
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.dental-clinic.rule=Host(`cabinet-dentaire.exemple.com`)"
-      - "traefik.http.routers.dental-clinic.tls=true"
-      - "traefik.http.routers.dental-clinic.tls.certresolver=letsencrypt"
-      - "traefik.http.services.dental-clinic.loadbalancer.server.port=3000"
-    networks:
-      - web
-
-  # Reverse proxy Traefik pour la gestion des certificats SSL et du routage
-  traefik:
-    image: traefik:v2.10
-    container_name: traefik
-    restart: unless-stopped
-    command:
-      - "--api.dashboard=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
-      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
-      - "--certificatesresolvers.letsencrypt.acme.email=admin@cabinet-dentaire.exemple.com"
-      - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
-      # Redirection HTTP vers HTTPS
-      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
-      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
-    ports:
-      - "80:80"
-      - "443:443"
-      - "8080:8080"  # Dashboard Traefik (à sécuriser en production)
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      - "./letsencrypt:/letsencrypt"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.traefik-dashboard.rule=Host(`traefik.cabinet-dentaire.exemple.com`)"
-      - "traefik.http.routers.traefik-dashboard.tls=true"
-      - "traefik.http.routers.traefik-dashboard.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.traefik-dashboard.service=api@internal"
-    networks:
-      - web
-
-networks:
-  web:
-    external: true

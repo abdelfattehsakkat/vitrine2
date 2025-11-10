@@ -102,9 +102,11 @@ export default function Navigation() {
                   <span className="absolute inset-x-5 -bottom-0.5 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full"></span>
                 </Link>
               ))}
-              <Button className="ml-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 transition-all duration-300 hover:scale-105 rounded-lg px-6">
-                Prendre RDV
-              </Button>
+              <a href="/contact">
+                <Button className="ml-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 transition-all duration-300 hover:scale-105 rounded-lg px-6">
+                  Prendre RDV
+                </Button>
+              </a>
             </div>
 
             {/* Menu mobile button - Design moderne */}
@@ -141,9 +143,11 @@ export default function Navigation() {
                     </div>
                     <span className="font-medium">{contactInfo.phone}</span>
                   </a>
-                  <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg rounded-lg py-6">
-                    Prendre RDV
-                  </Button>
+                  <a href="/contact">
+                    <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg rounded-lg py-6">
+                      Prendre RDV
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>

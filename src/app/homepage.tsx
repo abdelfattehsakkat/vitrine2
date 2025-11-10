@@ -19,8 +19,8 @@ export default function Home() {
     {
       icon: <GraduationCap className="w-6 h-6" />,
       title: "Doctorat en Chirurgie Dentaire",
-      institution: "Université Paris Descartes",
-      year: "2010"
+      institution: "Faculté de Médecine Dentaire de Monastir",
+      year: "2014"
     },
     {
       icon: <Award className="w-6 h-6" />,

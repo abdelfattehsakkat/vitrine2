@@ -190,99 +190,135 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Réception */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Image principale - Réception */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              className="group"
+              className="md:col-span-2"
             >
-              <div className="relative h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                <Image
-                  src="/images/cabinet/reception.jpg"
-                  alt="Salle d'accueil moderne"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute bottom-4 left-4 right-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="text-lg font-bold">Accueil Chaleureux</h3>
-                  <p className="text-sm opacity-90">Espace d'accueil moderne et confortable</p>
+              <div className="relative group overflow-hidden rounded-2xl shadow-2xl">
+                <div className="aspect-[16/9]">
+                  <Image
+                    src="/images/cabinet/reception.jpg"
+                    alt="Accueil moderne et chaleureux du cabinet dentaire"
+                    width={1200}
+                    height={675}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    priority
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
+                  <div className="absolute bottom-8 left-8 text-white">
+                    <h3 className="text-3xl font-bold mb-2">Accueil Chaleureux</h3>
+                    <p className="text-lg opacity-90">Un espace moderne conçu pour votre confort dès votre arrivée</p>
+                  </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Équipements */}
+            {/* Grille des autres images */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="group"
+              className="group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
             >
-              <div className="relative h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="aspect-[4/3] relative">
                 <Image
                   src="/images/cabinet/equipements.jpg"
-                  alt="Équipements dentaires de pointe"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  alt="Équipements dentaires de dernière génération"
+                  width={600}
+                  height={450}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute bottom-4 left-4 right-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="text-lg font-bold">Équipements de Pointe</h3>
-                  <p className="text-sm opacity-90">Technologies modernes et précises</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h4 className="font-bold text-lg">Équipements Modernes</h4>
+                    <p className="text-sm opacity-90">Technologies de pointe</p>
+                  </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Salle de soins */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className="group"
+              className="group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
             >
-              <div className="relative h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="aspect-[4/3] relative">
                 <Image
                   src="/images/cabinet/salle-soins-1.jpg"
-                  alt="Salle de soins confortable"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  alt="Salle de soins confortable et apaisante"
+                  width={600}
+                  height={450}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute bottom-4 left-4 right-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="text-lg font-bold">Confort Optimal</h3>
-                  <p className="text-sm opacity-90">Soins dans un environnement apaisant</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h4 className="font-bold text-lg">Confort Optimal</h4>
+                    <p className="text-sm opacity-90">Environnement apaisant</p>
+                  </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Stérilisation */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="group"
+              className="group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
             >
-              <div className="relative h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="aspect-[4/3] relative">
                 <Image
                   src="/images/cabinet/sterilisation.jpg"
-                  alt="Zone de stérilisation"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  alt="Zone de stérilisation aux normes les plus strictes"
+                  width={600}
+                  height={450}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute bottom-4 left-4 right-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="text-lg font-bold">Hygiène Irréprochable</h3>
-                  <p className="text-sm opacity-90">Stérilisation aux normes les plus strictes</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h4 className="font-bold text-lg">Hygiène Parfaite</h4>
+                    <p className="text-sm opacity-90">Standards les plus élevés</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Ajout d'une carte informative */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl p-8 text-white shadow-lg hover:shadow-2xl transition-all duration-300"
+            >
+              <div className="text-center">
+                <Shield className="w-12 h-12 mx-auto mb-4 text-blue-200" />
+                <h4 className="text-xl font-bold mb-3">Protocoles Stricts</h4>
+                <p className="text-blue-100 mb-4">
+                  Respect total des normes d'hygiène et de sécurité pour votre protection
+                </p>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span>Stérilisation à 134°C</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span>Matériel à usage unique</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span>Traçabilité complète</span>
+                  </div>
                 </div>
               </div>
             </motion.div>

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X, Phone, Mail, Clock, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,6 +11,7 @@ import Image from 'next/image';
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const pathname = usePathname();
 
   const navItems = [
     { href: '/', label: 'Accueil' },
@@ -92,16 +94,27 @@ export default function Navigation() {
 
             {/* Navigation desktop - Design épuré */}
             <div className="hidden md:flex items-center space-x-2">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="px-5 py-2.5 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-all duration-200 relative group rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/10"
-                >
-                  {item.label}
-                  <span className="absolute inset-x-5 -bottom-0.5 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full"></span>
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={
+                      `px-5 py-2.5 font-medium transition-all duration-200 relative group rounded-lg ` +
+                      (isActive
+                        ? 'text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/20 shadow-sm '
+                        : 'text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/10')
+                    }
+                  >
+                    {item.label}
+                    <span className={
+                      `absolute inset-x-5 -bottom-0.5 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full ` +
+                      (isActive ? 'scale-x-100' : 'transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300')
+                    }></span>
+                  </Link>
+                );
+              })}
               <a href="/contact">
                 <Button className="ml-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 transition-all duration-300 hover:scale-105 rounded-lg px-6">
                   Prendre RDV
@@ -123,16 +136,24 @@ export default function Navigation() {
           {isMenuOpen && (
             <div className="md:hidden py-6 border-t border-gray-100 dark:border-gray-800 animate-in slide-in-from-top duration-200">
               <div className="flex flex-col space-y-2">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="px-4 py-3 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/10 font-medium rounded-lg transition-all"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {navItems.map((item) => {
+                  const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={
+                        `px-4 py-3 font-medium rounded-lg transition-all ` +
+                        (isActive
+                          ? 'text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/20 shadow-sm '
+                          : 'text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/10')
+                      }
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
                 <div className="pt-4 mt-4 border-t border-gray-100 dark:border-gray-800 space-y-3">
                   <a 
                     href={`tel:${contactInfo.phone}`}

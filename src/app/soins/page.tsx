@@ -23,7 +23,7 @@ export default function Soins() {
         "Dévitalisation"
       ],
       duration: "30-90 min",
-      price: "À partir de 60€",
+      price: "À partir de 60DT",
       gradient: "from-blue-500 to-blue-600"
     },
     {
@@ -37,7 +37,7 @@ export default function Soins() {
         "Garantie 10 ans"
       ],
       duration: "1-2h",
-      price: "À partir de 1200€",
+      price: "À partir de 1600DT",
       gradient: "from-green-500 to-green-600"
     },
     {
@@ -50,8 +50,8 @@ export default function Soins() {
         "Recontouring esthétique",
         "Smile design numérique"
       ],
-      duration: "1-3h",
-      price: "À partir de 300€",
+      duration: "1-2h",
+      price: "À partir de 600DT",
       gradient: "from-pink-500 to-pink-600"
     },
     {
@@ -65,7 +65,7 @@ export default function Soins() {
         "Suivi personnalisé"
       ],
       duration: "12-24 mois",
-      price: "À partir de 2500€",
+      price: "À partir de 2500DT",
       gradient: "from-purple-500 to-purple-600"
     }
   ];

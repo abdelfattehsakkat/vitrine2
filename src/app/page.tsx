@@ -60,7 +60,7 @@ export default function Home() {
                 <span className="text-blue-300 block">notre passion</span>
               </h1>
               <p className="text-xl mb-8 text-blue-100">
-                Des soins dentaires d&apos;excellence dans un environnement moderne et bienveillant.
+                Dr. Guedria Yosra vous propose des soins dentaires d'excellence dans un environnement moderne et bienveillant.
                 Votre confort et votre satisfaction sont nos priorités.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">

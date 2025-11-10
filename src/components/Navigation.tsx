@@ -10,6 +10,7 @@ import Image from 'next/image';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
 
@@ -96,22 +97,30 @@ export default function Navigation() {
             <div className="hidden md:flex items-center space-x-2">
               {navItems.map((item) => {
                 const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+                const isHovered = hoveredMenu === item.href;
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
                     className={
                       `px-5 py-2.5 font-medium transition-all duration-200 relative group rounded-lg ` +
-                      (isActive
+                      ((isActive && !hoveredMenu) || isHovered
                         ? 'text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/20 shadow-sm '
-                        : 'text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/10')
+                        : 'text-gray-700 dark:text-gray-200') +
+                      ' hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/10'
                     }
+                    onMouseEnter={() => setHoveredMenu(item.href)}
+                    onMouseLeave={() => setHoveredMenu(null)}
                   >
                     {item.label}
-                    <span className={
-                      `absolute inset-x-5 -bottom-0.5 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full ` +
-                      (isActive ? 'scale-x-100' : 'transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300')
-                    }></span>
+                    <span
+                      className={
+                        `absolute inset-x-5 -bottom-0.5 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full transition-transform duration-300 ` +
+                        (((isActive && !hoveredMenu) || isHovered)
+                          ? 'scale-x-100'
+                          : 'scale-x-0')
+                      }
+                    ></span>
                   </Link>
                 );
               })}
@@ -138,19 +147,31 @@ export default function Navigation() {
               <div className="flex flex-col space-y-2">
                 {navItems.map((item) => {
                   const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+                  const isHovered = hoveredMenu === item.href;
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
                       className={
-                        `px-4 py-3 font-medium rounded-lg transition-all ` +
-                        (isActive
+                        `px-4 py-3 font-medium rounded-lg transition-all relative group ` +
+                        ((isActive && !hoveredMenu) || isHovered
                           ? 'text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/20 shadow-sm '
-                          : 'text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/10')
+                          : 'text-gray-700 dark:text-gray-200') +
+                        ' hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/10'
                       }
+                      onMouseEnter={() => setHoveredMenu(item.href)}
+                      onMouseLeave={() => setHoveredMenu(null)}
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.label}
+                      <span
+                        className={
+                          `absolute left-4 right-4 -bottom-0.5 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full transition-transform duration-300 ` +
+                          (((isActive && !hoveredMenu) || isHovered)
+                            ? 'scale-x-100'
+                            : 'scale-x-0')
+                        }
+                      ></span>
                     </Link>
                   );
                 })}

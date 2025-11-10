@@ -66,9 +66,11 @@ export default function Home() {
                 Votre confort et votre satisfaction sont nos priorités.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
-                  Découvrir nos soins
-                </Button>
+                <a href="/soins">
+                  <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
+                    Découvrir nos soins
+                  </Button>
+                </a>
                 <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
                   Prendre rendez-vous
                 </Button>

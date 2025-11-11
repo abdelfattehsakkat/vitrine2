@@ -20,7 +20,7 @@ export default function RootLayout({
       <head>
         <meta property="og:title" content="DR. Guedria Yosra" />
         <meta property="og:description" content="Cabinet dentaire moderne proposant des soins de qualité dans un environnement bienveillant. Spécialistes en implantologie, orthodontie et esthétique dentaire." />
-        <meta property="og:image" content="https://drguedria.tn/images/og-image.jpg" />
+        <meta property="og:image" content="https://www.drguedria.tn/images/og-image.jpg" />
         <meta property="og:url" content="https://drguedria.tn/" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />

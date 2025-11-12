@@ -12,6 +12,10 @@
 /.next/
 /out/
 
+# dental-clinic (ignorer build et dépendances)
+/dental-clinic/node_modules
+/dental-clinic/.next
+
 # production
 /build
 

@@ -18,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
+  <link rel="icon" type="image/jpeg" href="/images/logos/logo.jpg" />
         <meta property="og:title" content="DR. Guedria Yosra" />
         <meta property="og:description" content="Cabinet dentaire moderne proposant des soins de qualité dans un environnement bienveillant. Spécialistes en implantologie, orthodontie et esthétique dentaire." />
         <meta property="og:image" content="https://www.drguedria.tn/images/og-image.jpg" />

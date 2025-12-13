@@ -8,6 +8,39 @@ export const metadata: Metadata = {
   title: "Cabinet Dentaire Dr. Guedria Yosra",
   description: "Dentiste à la Ghazela, Ariana, Tunisie. Cabinet dentaire moderne proposant des soins de qualité : prothèse, orthodontie, esthétique dentaire. Prenez rendez-vous avec votre dentiste à la Ghazela, Ariana.",
   keywords: "dentiste ghazela, dentiste ariana, dentiste tunisie, cabinet dentaire, soins dentaires, prothèses dentaires, esthétique dentaire, Dr Guedria Yosra",
+  metadataBase: new URL('https://drguedria.tn'),
+  openGraph: {
+    title: "Dr. Guedria Yosra - Dentiste à la Ghazela, Ariana",
+    description: "Dentiste à la Ghazela, Ariana, Tunisie. Soins dentaires de qualité : implantologie, orthodontie, esthétique dentaire. Prenez rendez-vous avec votre dentiste.",
+    url: 'https://drguedria.tn',
+    siteName: 'Cabinet Dentaire Dr. Guedria Yosra',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Cabinet Dentaire Dr. Guedria Yosra',
+      }
+    ],
+    locale: 'fr_FR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Dr. Guedria Yosra - Dentiste à la Ghazela, Ariana",
+    description: "Dentiste à la Ghazela, Ariana, Tunisie. Soins dentaires de qualité : implantologie, orthodontie, esthétique dentaire.",
+    images: ['/images/og-image.jpg'],
+  },
+  icons: {
+    icon: [
+      { url: '/images/logos/favicon.ico' },
+      { url: '/images/logos/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/images/logos/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/images/logos/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -18,18 +51,6 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/images/logos/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/logos/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/images/logos/favicon-16x16.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/images/logos/apple-touch-icon.png" />
-        <meta property="og:title" content="DR. Guedria Yosra" />
-        <meta property="og:description" content="Dentiste à la Ghazela, Ariana, Tunisie. Soins dentaires de qualité : implantologie, orthodontie, esthétique dentaire. Prenez rendez-vous avec votre dentiste à la Ghazela, Ariana." />
-        <meta property="og:image" content="https://www.drguedria.tn/images/og-image.jpg" />
-        <meta property="og:url" content="https://drguedria.tn/" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Dentiste Ghazela Ariana Tunisie - Dr. Guedria Yosra" />
-        <meta name="twitter:description" content="Dentiste à la Ghazela, Ariana, Tunisie. Soins dentaires de qualité : implantologie, orthodontie, esthétique dentaire." />
         {/* Schema.org Dentist JSON-LD */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{
           __html: JSON.stringify({

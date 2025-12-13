@@ -1,7 +1,8 @@
-FROM node:20-slim AS base
+FROM node:20-alpine AS base
 
 # Installer les dépendances seulement quand nécessaire
 FROM base AS deps
+# Alpine provides `apk`; install libc6-compat if needed by native deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
@@ -29,8 +30,8 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # Créer un utilisateur non-root
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN addgroup -S -g 1001 nodejs
+RUN adduser -S -u 1001 -G nodejs nextjs
 
 # Copier les fichiers nécessaires depuis le builder
 COPY --from=builder /app/public ./public

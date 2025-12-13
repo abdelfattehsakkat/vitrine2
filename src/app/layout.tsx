@@ -18,7 +18,10 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
-        <link rel="icon" type="image/jpeg" href="/images/logos/logo.jpg" />
+        <link rel="icon" href="/images/logos/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/logos/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/logos/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/logos/apple-touch-icon.png" />
         <meta property="og:title" content="DR. Guedria Yosra" />
         <meta property="og:description" content="Dentiste à la Ghazela, Ariana, Tunisie. Soins dentaires de qualité : implantologie, orthodontie, esthétique dentaire. Prenez rendez-vous avec votre dentiste à la Ghazela, Ariana." />
         <meta property="og:image" content="https://www.drguedria.tn/images/og-image.jpg" />

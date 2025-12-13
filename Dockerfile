@@ -33,16 +33,12 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN addgroup -S -g 1001 nodejs
 RUN adduser -S -u 1001 -G nodejs nextjs
 
-# Copier les fichiers nécessaires depuis le builder
-COPY --from=builder /app/public ./public
-
-# Créer le dossier .next avec les bonnes permissions
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
-
 # Copier automatiquement les fichiers de sortie selon le preset de sortie
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Copier les fichiers public (important pour les images et assets)
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 USER nextjs
 
@@ -50,6 +46,10 @@ EXPOSE 3000
 
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
+
+# Healthcheck pour vérifier que l'app répond
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})" || exit 1
 
 # Commande pour démarrer l'application
 CMD ["node", "server.js"]
